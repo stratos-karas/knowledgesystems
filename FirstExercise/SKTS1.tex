@@ -1,0 +1,248 @@
+\documentclass[10pt]{article}
+\usepackage[margin=10pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english, greek]{babel}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\human}{\texttt{Aνθρωπος}}
+\newcommand{\hasChild}{\texttt{έχειΠαιδί}}
+\newcommand{\hasGChild}{\texttt{έχειΕγγόνι}}
+\newcommand{\hasParent}{\texttt{έχειΓονέα}}
+\newcommand{\isMarried}{\texttt{έχειΣύζυγο}}
+
+\title{Συστήματα και Τεχνολογίες Γνώσης\\ \small{1η Γραπτή Εργασία}}
+\author{Όνομα: Ευστράτιος Καραπαναγιώτης\\ \small{ΑΜ: 03115177}}
+
+\begin{document}
+
+\maketitle
+\section*{Ερώτημα 1}
+
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item Το $Tbox$ είναι κενό σε αυτή την περίπτωση. Θεωρούμε πεδίο ερμηνείας $\Delta^{I} = \{a, b, c\}$ και απεικονίσεις \\$R^{I} = \{(a, a), (a, b), (b, a), (b, c), (c, b)\}, \ A^{I} = \{a\}, \ B^{I} = \{b, c\}, \ C^{I} = \{a, b, c\}$.
+\\
+Θέλουμε να μελετήσουμε αν η παραπάνω ερμηνεία αποτελεί μοντέλο της έννοιας $E1 \equiv A \sqcap \exists R.B \sqcap \exists R^{-}.C \sqcap \forall R.\neg(B \sqcap C)$. Για το λόγο αυτό θέλουμε $E1^I \neq \emptyset$. Έχουμε πως $E1^I = A^I \cap (\exists R.B)^{I} \cap (\exists R^{-}.C)^{I} \cap (\forall R.\neg(B \sqcap C))^{I}$
+\\\\
+$
+\begin{cases}
+\begin{cases}
+(\exists R.B)^{I} = \{x | \exists. y B(y) \land R(x, y)\}^{I} = \{a, b, c\} = \Delta^{I}
+\\
+(\exists R^{-}.C)^{I} = \{x | \exists. y C(y) \land R(y, x)\}^{I} = \{b, a, c\} = \Delta^{I}
+\end{cases}
+\Rightarrow (\exists R.B)^{I} \cap (\exists R^{-}.C)^{I} = \{a, b, c\} = \Delta^{I}
+\\\\
+\begin{cases}
+(\forall R.\neg(B \sqcap C))^{I} = \{x^I | \forall y. y^I \in (\neg B^I \cup \neg C^I) \rightarrow (x^I, y^I) \in R^I\}^I
+\\
+(\neg B^I \cup \neg C^I) = \{a\} \cup \emptyset = \{a\}
+\end{cases}
+\Rightarrow (\forall R.\neg(B \sqcap C))^{I} = \{a, b\}
+\end{cases}
+$
+\\\\
+Τελικά $E1^I = \{a\} \cap \Delta^I \cap \{a, b\} = \{a\} \neq \emptyset$ και επομένως η παραπάνω ερμηνεία αποτελέι μοντέλο της έννοιας E1.
+
+\item Το $Tbox$ δεν είναι κενό σε αυτή την περίπτωση οπότε η ερμηνεία που θα δώσουμε θα πρέπει να ικανοποιεί και αυτό προκειμένου να αποτελεί μοντέλο. Το $Sig(E2, Tbox) = \{A, B, C, D\}$. Θεωρούμε πεδίο ερμηνείας $\Delta^I = \{a, b, c\}$ και απεικονίσεις $A^I = \{a\}, \ B^I = \{b\}, \ C^I = \{c\}, \ D^I = \Delta^I, \ R^I = \{(a, a), (a, b), (b, a), (b, c), (c, b)\}$. Έχουμε πως $E2 \equiv \exists R.A \sqcap \exists R.B \sqcap \forall R^{-}.B \Rightarrow E2^I = (\exists R.A)^I \cap (\exists R.B)^I \cap (\forall R^{-}.B)^I$, άρα:
+\\\\
+$
+\begin{cases}
+(\exists R.A)^I = \{x^I |\exists y. y^I \in A \land (x^I, y^I) \in R^I\} = \{a, b\}
+\\
+(\exists R.B)^I = \{x^I |\exists y. y^I \in B \land (x^I, y^I) \in R^I\} = \{a, c\}
+\\
+(\forall R^{-}.B)^I = \{x^I |\forall y. y^I \in B^I \rightarrow (y^I, x^I) \in R^I\} = \{a, c\}
+\end{cases}
+\Rightarrow E2^I = \{a, b\} \cap \{a, c\} \cap \{a, c\} = \{a\}
+$
+\\\\
+Τώρα θα πρέπει να ελέγξουμε αν ικανοποιούνται και τα αξιώματα του $Tbox$:\\\\
+$B \sqsubseteq D \Rightarrow B^I \subseteq D^I \Rightarrow \{b\} \subseteq \Delta^I$ \checkmark
+\\
+$
+\begin{cases}
+\exists R.(D \sqcup C) \Rightarrow \{x^I |\exists y. y^I \in (D^I \cup C^I) \land (x^I, y^I) \in R^I\} = \{x^I |\exists y. y^I \in \Delta^I \land (x^I, y^I) \in R^I\} = \Delta^I
+\\
+\exists R^{-}.\neg A \Rightarrow \{x^I|\exists y. y^I \in (\Delta^I \setminus A^I) \land (y^I, x^I) \in R^I\} = \{a, c, b\} = \Delta^I
+\end{cases}
+\\\\
+\Rightarrow (\exists R.(D \sqcup C))^I \subseteq (\exists R^{-}.\neg A)^I \Rightarrow \Delta^I \subseteq \Delta^I
+$\checkmark
+
+Αφού ικανοποιούνται και τα αξιώματα του $Tbox$ τότε η ερμηνεία αυτή αποτελεί μοντέλο της έννοιας.
+\end{enumerate}
+\item
+\begin{enumerate}
+\item Έστω τυχαίο αντικείμενο $b$ του κόσμου που ανήκει στην ερμηνεία του $B$, δηλαδή $b \in B^I$. Με βάση το $Tbox$ ισχύει $B \sqsubseteq A \sqcup C \Rightarrow b \in A^I \cup C^I$. Έστω επίσης $d$ αντικείμενο του κόσμου το οποίο ανήκει στην ερμηνεία του $D$. Με βάση το $Tbox$ ισχύει $D \sqsubseteq \neg C \Rightarrow d \in \neg C^I$. Παίρνοντας την τομή αυτών των δύο συνόλων και εφαρμόζοντας πράξεις συνόλων έχουμε $(b \cap d) \in (A^I \cup C^I) \cap (\neg C^I) \Leftrightarrow (b \cap d) \in A^I \cap \neg C^I \Rightarrow (b \cap d) \in A^I$. Άρα αποδείξαμε ότι $B \sqcap D \sqsubseteq A$.
+
+\item Πάλι ξεκινάμε τη μελέτη από το $Tbox$ το οποίο μας δίνεται. Έχουμε λοιπόν:\\
+1. $C \sqsubseteq \exists R.(A \sqcap \exists R.B)\Rightarrow
+\begin{cases}
+\psi \in C^I
+\\
+(\exists R.(A \sqcap \exists R.B))^I = \{x^I|\exists y. y^I \in (A \sqcap \exists R.B)^I \land (x^I, y^I) \in R^I\}
+\end{cases}
+\\\\
+\texttt{όπου }(A \sqcap \exists R.B)^I = A^I \cap \{y_1^I |\exists y_2. y_2^I \in B^I \land (y_1^I, y_2^I) \in R^I\}
+$.
+Με τη βοήθεια της υπαγωγής μπορούμε να διατυπώσουμε την εξής πρόταση:\\
+$\psi \in (\exists R.(A \sqcap \exists R.B))^I \Leftrightarrow 
+\begin{cases}
+\psi \in \{x^I|\exists y. y^I \in A^I \land (x^I, y^I) \in R^I\}
+\\
+\psi \in \{x^I|\exists y. y^I \in \{y_1^I |\exists y_2. y_2^I \in B^I \land (y_1^I, y_2^I) \in R^I\} \land (x^I, y^I) \in R^I\}
+\end{cases}
+$
+\\\\\\\
+2. $\exists R.B \sqsubseteq D \Rightarrow
+\delta \in (\exists R.B \sqsubseteq D)^I \Leftrightarrow \delta \in \{z^I | \exists w. w^I \in B \land (z, w) \in R^I\}
+$
+\\
+Με τη βοήθεια της υπαγωγής έχουμε $\{z^I | \exists w. w^I \in B \land (z, w) \in R^I\} \subseteq D^I$ και άρα για το δ ισχύει: $\delta \in D^I$
+\\\\
+3. $\exists R.(A \sqcap D) \sqsubseteq \neg(C_1 \sqcap C_2) \Rightarrow
+\begin{cases}
+\lambda \in (\exists R.(A \sqcap D))^I \Leftrightarrow \lambda \in \{u^I |\exists v. v^I \in A^I \cap D^I \land (u^I, v^I) \in R^I\}
+\\
+(\neg(C_1 \sqcap C_2))^I = (\neg C_1)^I \cup (\neg C_2)^I = (\Delta^I \setminus C_1^I) \cup (\Delta^I \setminus C_2^I)
+\end{cases}
+$
+\\
+Με τη βοήθεια της υπαγωγής και της ιδιότητας της τομής συνόλων μπορούμε να διατυπώσουμε τις εξής πιθανότητες για το αντικείμενο λ:\\
+$\lambda \in 
+\begin{cases}
+\{u^I |\exists v. v^I \in A^I \land (u^I, v^I) \in R^I\}
+\\
+\{u^I |\exists v. v^I \in D^I \land (u^I, v^I) \in R^I\}
+\\
+(\Delta^I \setminus C_1^I) \cup (\Delta^I \setminus C_2^I)
+\end{cases}
+$
+\\\\
+Σε αυτό το σημείο αρκεί να παρατηρήσουμε τις εκφράσεις 1, 2 και 3 που διατυπώθηκαν για να εξάγουμε το ζητούμενο. Αρχικά από τις (1) και (2) έχουμε πως το σύνολο $\{y_1^I |\exists y_2. y_2^I \in B^I \land (y_1^I, y_2^I) \in R^I\}$ του πρώτου ταυτίζεται με το σύνολο $\{z^I | \exists w. w^I \in B \land (z, w) \in R^I\}$ του δεύτερου. Όπως διατυπώθηκε στο 2, χάρη στην υπαγωγή έχουμε $\{y_1^I |\exists y_2. y_2^I \in B^I \land (y_1^I, y_2^I) \in R^I\} \subseteq D^I$. Ισοδύναμα λοιπόν η σχέση για το ψ στο 1 μπορεί να ανασκευαστεί ως:\\
+$\psi \in
+\begin{cases}
+\{x^I|\exists y. y^I \in A^I \land (x^I, y^I) \in R^I\}
+\\
+\{x^I|\exists y. y^I \in D^I \land (x^I, y^I) \in R^I\}
+\end{cases}
+$
+\\\\
+Βλέπουμε λοιπόν ότι $(\exists R.(A \sqcap \exists R.B))^I \equiv (\exists R.(A \sqcap D))^I \Rightarrow \exists R.(A \sqcap \exists R.B) \equiv \exists R.(A \sqcap D)$, δηλαδή αποτελούν ισοδύναμες έννοιες. 
+\\
+Όμως με βάση το $Tbox$ γνωρίζουμε πως:
+$
+\begin{cases}
+C \sqsubseteq \exists R.(A \sqcap \exists R.B) \Leftrightarrow C \sqsubseteq \exists R.(A \sqcap D)
+\\
+\exists R.(A \sqcap D) \sqsubseteq \neg(C_1 \sqcap C_2)
+\end{cases}
+\Rightarrow C \sqsubseteq \neg(C_1 \sqcap C_2)
+\Rightarrow C \sqsubseteq \neg C_1 \sqcup \neg C_2
+$
+\\\\
+Επομένως η υπαγωγή $C \sqsubseteq \neg C_1 \sqcup C_2$ θα ισχύει μόνο αν $\neg C_1 \sqcup \neg C_2 \sqsubseteq \neg C_1 \sqcup C_2$ ή εναλλακτικά αν $\neg C_1^I \cup \neg C_2^I \subseteq \neg C_1^I \cup C_2^I$. Κατά συνέπεια δεν μπορούμε να αποφανθούμε αν ισχύει αυτή η υπαγωγή. Αν το αντιμετωπίσουμε ως μια βάση δεδομένων κι δεχθούμε την αντίληψη του κλειστού κόσμου θα είχαμε ότι \textbf{ΔΕΝ} ισχύει η υπαγωγή.
+\end{enumerate}
+\end{enumerate}
+
+\section*{Ερώτημα 2}
+\begin{itemize}
+\item $(\forall s. \bot)^I = \{x^I |\forall y. y^I \in (\bot)^I \rightarrow (x^I, y^I) \in s^I\} = \{x^I |\forall y. y^I \in \emptyset \rightarrow (x^I, y^I) \in s^I\} = \emptyset$
+\\
+$(\forall r.\forall s. \bot)^I = \{x^I |\forall y. y^I \in (\forall s. \bot)^I \rightarrow (x^I, y^I) \in r^I\} = \{x^I |\forall y. y^I \in \emptyset \rightarrow (x^I, y^I) \in r^I\} = \emptyset$
+\\
+$X^I = \emptyset$
+
+\item $(\exists r^{-}.\top)^I = \{x^I|\exists y. y^I \in (\top)^I \land (y^I, x^I) \in r^I\} = \{x^I|\exists y. y^I \in \Delta^I \land (y^I, x^I) \in r^I\} = \{a_1, a_3, a_2, a_4\} = \Delta^I$
+\\
+$(\exists s.\exists r^{-}.\top)^I = \{x^I|\exists y. y^I \in (\exists r^{-}.\top)^I \land (x^I, y^I) \in s^I\} = \{x^I|\exists y. y^I \in \Delta^I \land (x^I, y^I) \in s^I\} = \{a_1, a_2, a_4, a_1\} = \{a_1, a_2, a_4\}$
+\\
+$X^I = \{a_1, a_2, a_4\}$
+
+\item $(\exists r.\top)^I = \{x^I |\exists y. y^I \in (\top)^I \land (x^I, y^I) \in r^I\} = \{x^I |\exists y. y^I \in \Delta^I \land (x^I, y^I) \in r^I\} = \{a_2, a_3, a_2, a_3\} = \{a_2, a_3\}$
+\\
+$(A \sqcup \exists r.\top)^I = A^I \cup (\exists r.\top)^I = \{a_1, a_4\} \cup \{a_2, a_3\} = \Delta^I$
+\\
+$(\forall s.(A \sqcup \exists r.\top))^I = \{x^I |\forall y. y^I \in (A \sqcup \exists r.\top)^I \rightarrow (x^I, y^I)  s^I\} = \{x^I |\forall y. y^I \in \Delta^I \rightarrow (x^I, y^I) \in s^I\} = \emptyset$
+\\
+$X^I = \emptyset$
+
+\item $(\exists r^{-}.\top)^I = \{x^I|\exists y. y^I \in (\top)^I \land (y^I, x^I) \in r^I\} = \{x^I|\exists y. y^I \in \Delta^I \land (y^I, x^I) \in r^I\} = \{a_1, a_3, a_2, a_4\} = \Delta^I$
+\\
+$(\exists r.\exists r^{-}.\top)^I = \{x^I|\exists y. y^I \in (\exists r^{-}.\top)^I \land (x^I, y^I) \in r^I\} = \{x^I|\exists y. y^I \in \Delta^I \land (x^I, y^I) \in r^I\} = \{a_2, a_3\}$
+\\
+$(\exists r.\exists r.\exists r^{-}.\top)^I = \{x^I|\exists y. y^I \in (\exists r.\exists r^{-}.\top)^I \land (x^I, y^I) \in r^I\} = \{x^I|\exists y. y^I \in \{a_2, a_3\} \land (x^I, y^I) \in r^I\} = \{a_2, a_3\}$
+\\
+$X^I = \{a_2, a_3\}$
+\end{itemize}
+
+\section*{Ερώτημα 3}
+
+Θα πρέπει να αναφερθεί πως οι παρακάτω απαντήσεις θεωρούν ότι η έννοια Αδελφός δεν εμπεριέχει πληροφορία του φύλλου κι ότι εννοεί και τα δύο (ολα). Θα μπορούσε να διατυπωθεί ένα αξίωμα της μορφής $\texttt{Αρσενικό} \ \sqsubseteq \ \human$. Παρακάτω αποφεύγεται η χρήση αυτής της έννοιας μιας και η σύνταξή της, με αυτή τη γνώση Κ, δεν υποδηλώνει την ουσία του ονόματός της (καταλήγει να αποτελεί $syntactic \ sugar$).\\
+
+\begin{itemize}
+
+\item Ουσιαστικά η έννοια που ζητείται να κατασκευαστεί μπορεί να τεκμηριωθεί με βάση τις εξής, λίγο πιο ελέυθερεις έννοιες:\\
+$\texttt{ΕτεροθαλήςΑδελφόςMεΜοναδικάΠαιδιάΕναΑνύπαντροΠαιδίΚαιΕναΠαντρεμένοΠαιδίΜεΕγγόνια}
+\equiv \texttt{ΕτεροθαλήςΑδελφός} \\ \sqcap \ \texttt{MεΜοναδικάΠαιδιά} \ \sqcap \ \texttt{ΕναΑνύπαντροΠαιδίΚαιΕναΠαντρεμένοΠαιδίΜεΕγγόνια}$ \\\\
+Όπως θα αποδειχθεί παρακατω αυτή η έννοια \textbf{ΔΕΝ} μπορεί να κατασκευαστεί εξαιτίας της ιδιότητας του να είναι ετεροθαλής. Θα γίνει ξεχωριστή μελέτη για τη κάθε μια υποέννοια και εξήγηση.
+\begin{itemize}
+
+\item Την έννοια ΜεΜοναδικάΠαιδιά την κατασκευάζουμε εύκολα ως εξής: 
+\\$\geq 2 \ \hasChild.\human \ \sqcap \ \leq 2 \hasChild.\human$\\
+Μιας και γνωρίζουμε ότι θέλουμε να έχει αποκλειστικά δύο παιδιά η αρχική έννοια, πετυχαίνουμε την ισότητα με το να πρέπει να ικανοποιεί και το μεγαλύτερο ή ίσο και μικρότερο ή ίσο του 2 έχειΠαιδιά.Ανθρώπος.
+
+\item Η έννοια ΕναΑνύπαντροΠαιδίΚαιΕναΠαντρεμένοΠαιδίΜεΕγγόνια διακρίνεται σε δύο έννοιες:\\
+1. $\texttt{ΕναΑνύπαντροΠαιδί} \ \equiv \ \exists \hasChild.(\human \ \sqcap \ \forall\neg \isMarried.\human)$
+\\
+2. ΕναΠαντρεμένοΠαιδίΜεΕγγόνια
+\\
+\textbf{Εδώ} θα πρέπει να γίνει μια \textbf{σημαντική επισήμανση!} Στην έννοια ΕναΠαντρεμένοΠαιδίΜεΕγγόνια, η συνθήκη ΜεΕγγόνια μπορεί να εννοεί την ιδιότητα του κάποιος να έχει εγγόνι(α) ή να εννοεί ότι έχει περισσότερα από ένα εγγόνια. Στην πρώτη περίπτωση η έννοια ΕναΠαντρεμένοΠαιδίΜεΕγγόνια μπορεί να κατασκευαστεί όπως υποδεικνύεται παρακάτω,$\exists\hasChild.(\human \ \sqcap \ \exists\isMarried.\human \ \sqcap \ \exists\hasChild.(\human \ \sqcap \exists\hasChild.\human))$. Στη δεύτερη περίπτωση δεν μπορεί να κατασκευαστεί η έννοια καθώς πρέπει να παρθούν άπειρες περιπτώσεις. Η λύση σε αυτό το πρόβλημα θα ήταν η ύπαρξη ενός ρόλου έχειΕγγόνι. Αυτό υποστηρίζεται από ΠΛ που φέρουν και $Rbox$ πέρα από τα $Abox$ και $Tbox$. Άρα σε μια τέτοια λογική μόνο μπορούμε να κατασκευάσουμε το ρόλο $\hasChild \circ \hasChild \ \sqsubseteq \ \hasGChild$, με σύνθεση ρόλων.
+\begin{quote}
+\small{Εναλλακτικό παράδειγμα για να τονίσει την παραπάνω αμφισημία της φυσικής γλώσσας είναι όταν λέμε πως γονέας είναι κάποιος που έχει παιδιά. Αυτό μπορεί να τονίζει την ιδιότητα του "έχειν" παιδιά (άρα τουλάχιστον ένα παιδί) ή ότι έχει παραπάνω από ένα παιδιά!}
+\end{quote}
+
+Τελικά διακρίνουμε τις περιπτώσεις:
+
+$
+\texttt{ΕναΠαντρεμένοΠαιδίΜεΕγγόνια} \ \equiv \ 
+\begin{cases}
+\exists\hasChild.(\human \ \sqcap \ \exists\isMarried.\human \ \sqcap \\ \exists\hasChild.(\human \ \sqcap \exists\hasChild.\human)), \texttt{αν ΜεΕγγόνια δηλώνει ιδιότητα}
+\\\\
+\exists\hasChild.(\human \ \sqcap \ \exists\isMarried.\human \ \sqcap \\ \geq \ 2 \hasGChild.\human), \texttt{αν ΜεΕγγόνια υποδηλώνει αρίθμηση} \\ \qquad\qquad\qquad\qquad\qquad\qquad \texttt{και υποστηρίζεται} Rbox
+\\\\
+\texttt{ΔΕΝ ΟΡΙΖΕΤΑΙ, αν ΜεΕγγόνια υποδηλώνει αρίθμηση και ΔΕΝ υποστηρίζεται} Rbox
+\end{cases}
+$
+
+
+\item Στην έννοια ΕτεροθαλήςΑδελφός ανήκουν ουσιαστικά τα ονόματα τα οποία έχουν αδέλφια αλλά τουλάχιστον με ένα απο αυτά έχει ένα διαφορετικό γονέα. Για να διατυπωθεί επομένως αυτή η έννοια απαιτείται η ύπαρξη ενός ρόλου, έχειΓονέα. Αυτό μπορούμε να το πετύχουμε παίρνοντας τον αντίστροφο του ρόλου έχειΠαιδί. Δηλαδή $\hasParent \ \equiv \ \hasChild^{-}$. Τώρα η έννοια αυτή μπορεί να κατασκευαστεί:\\\\
+$\texttt{ΕτεροθαλήςΑδελφός}(n) \ \equiv \ \exists\hasChild^{-}.(\human \ \sqcap \ \geq 2 \ \hasChild.\human \ \sqcap \ \leq n \ \hasChild.\human \ \sqcap \\ \exists\isMarried.(\human \ \sqcap \ \leq (n-1) \hasChild.\human \ \sqcap \ \geq 1 \ \hasChild.\human))$
+\\\\
+Ουσιαστικά θα πρέπει να έχει ως γονέα αντικείμενα που είναι άνθρωποι, έχουν τουλάχιστον δύο παιδιά (εκ των οποίων ένα είναι το ίδιο που κατασκευάζουμε την έννοια), μάξιμουμ $n$ παιδιά και έχει τουλάχιστον ένα/μία σύζυγο που είναι άνθρωπος και έχει τουλάχιστον 1 παιδί και μαξιμουμ ($n$-1) παιδιά. Το $n$ στην προκειμένη περίπτωση λειτουργεί ως ελέυθερη μεταβλητή προκειμένου να μπορεί να γίνει αναφορά στο πως θα πρέπει να είναι η κλάση των σύζυγων του γονέα. Πάντα πρέπει ένα ή περισσότερα παιδιά να μην έχουν προκύψει από τους δύο γονείς εξού και η μέγιστη τιμή παιδών του/της συζύγου είναι $n$-1. 
+\\
+Σε αυτό το σημείο παρουσιάζεται όμως το βασικό πρόβλημα και αυτό είναι πως η έννοια αυτή εξαρτάται από το $n$ που όπως είπαμε είναι ελέυθερη μεταβλητή. Επομένως θα πρέπει να ορισθεί ως $\texttt{ΕτεροθαλήςΑδελφός} \equiv \texttt{ΕτεροθαλήςΑδελφός}(2) \sqcup \\ \texttt{ΕτεροθαλήςΑδελφός}(3) \sqcup \ldots \sqcup \texttt{ΕτεροθαλήςΑδελφός}(n) \sqcup \ldots$. Καταλήγουμε έτσι όμως να έχουμε μια απειροέννοια με αποτέλεσμα να είναι αναποφάσιστο το γεγονός αν μπορεί να κατασκευαστεί αυτή η έννοια. Επομένως θα πρέπει να την ορίσουμε διαφορετικά. Θα μπορούσαμε να την κατασκευάσουμε αναδρομικά ως $\texttt{ΕτεροθαλήςΑδελφός}(n) \sqsubseteq \texttt{ΕτεροθαλήςΑδελφός}(n+1)$. Πάλι προκύπτει πρόβλημα, πως αν δεν υπάρχει έννοια $\texttt{ΕτεροθαλήςΑδελφός}(n+1)$ τότε $\texttt{ΕτεροθαλήςΑδελφός}(n) \sqsubseteq \bot$. Αποδείξαμε λοιπόν ότι με τους κατασκευαστές εννοιών δεν μπορεί να κατασκευαστεί αυτή η έννοια. Το ίδιο ισχύει αν προσπαθήσουμε να κατακσευάσουμε κι έναν ρόλο που να ικανοποιεί την ιδιότητα του ετεροθαλής. 
+\end{itemize}
+
+Συμπερασματικά, η έννοια ΕτεροθαλήςΑδελφόςMεΜοναδικάΠαιδιάΕναΑνύπαντροΠαιδίΚαιΕναΠαντρεμένοΠαιδίΜεΕγγόνια δεν μπορεί να κατασκευαστεί εξαιτίας της υποέννοιας ΕτεροθαλήςΑδελφός.
+
+\item Σε αυτή την έννοια όπως παρατηρήσαμε και πριν υπάρχει πρόβλημα όταν αντιμετωπίζουμε αριθμητικά την έννοια ενός εγγονού. Θα μποερούσαμε να κατασκευάσουμε την έννοια μόνο από έννοιες όπως έχει ένα παιδί που έχει τρία παιδιά ή δύο παιδιά με ένα να έχει δύο παιδιά και το άλλο ένα ή ακόμα και τρία παιδιά τα οποία το καθένα έχει το δικό του παιδί. Στην τελική όμως δεν μπορεί αυτός ο τρόπος κι οι γνώριμοι κατασκευαστές εννοιών να καλύψουν την περίπτωση π.χ. των δέκα παιδιών εκ των οποίων μόνο κάποια επιστρέφουν αθροιστικά τρια συνολικά παιδιά. Ακόμα και με την εφαρμογή απαριθμημάτων($nominals$) δεν μπορεί κανείς να πει ότι μόνο αυτά τα ονόματα είναι παιδιά/έχουν γονείς, γιατί έτσι δεν μπορεί να κατασκευαστεί η έννοια που ζητείται(ουσιαστικά δεν μένουν ονόματα που να είναι παιδιά για όλες τις περιπτώσεις!). Επομένως, καταλήγει το ζήτημα πάλι στο αν επιτρέπται η χρήση $Rbox$ στην περιγραφική λογική.
+\begin{enumerate}
+\item Αν επιτρέπεται η χρήση $Rbox$ και κατασκευαστών ρόλων τότε με τη χρήση της σύνθεσης ρόλων όπως είδαμε και προηγουμένως κατασκευάζεται ρόλος έχειΕγγόνι ($\hasChild \circ \hasChild \ \sqsubseteq \ \hasGChild$). Έτσι, ανάλογα με το αν το ΜεΤρίαΕγγόνια απευθύνεται στον γονέα ή αδελφό διακρίνουμε δύο περιπτώσεις.
+\begin{enumerate}
+\item Περίπτωση που ο γονέας έχει τρία εγγόνια:\\
+$\texttt{ΑδελφόςΑνύπατρουΓονιούΜεΤρίαΕγγόνια} \equiv \exists\hasChild^{-}.(\human \ \sqcap \ \forall\neg\isMarried.\human \ \sqcap \ \geq2 \\ \hasChild.\human \ \sqcap \ \geq 3 \ \hasGChild.Human \ \sqcap \ \leq 3 \ \hasGChild.Human)$
+
+\item Περίπτωση που ο αδελφός έχει τρία εγγόνια:\\
+$\texttt{ΑδελφόςΑνύπατρουΓονιούΜεΤρίαΕγγόνια} \equiv (\exists\hasChild^{-}.(\human \ \sqcap \ \forall\neg\isMarried.\human \ \sqcap \\ \geq2 \ \hasChild.\human)) \ \sqcap \ \geq 3 \ \hasGChild.Human \ \sqcap \ \leq 3 \ \hasGChild.Human$
+\end{enumerate}
+
+\item Αν δεν επιτρέπεται η χρήση $Rbox$ τότε η έννοια ΑδελφόςΑνύπατρουΓονιούΜεΤρίαΕγγόνια δεν μπορεί να κατασκευαστεί!
+\end{enumerate}
+\end{itemize}
+
+\end{document}
