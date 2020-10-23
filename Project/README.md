@@ -6,4 +6,4 @@
 * Ως αποθήκη της βάσης γνώσης χρησιμοπoιήθηκε το λογισμικό [OpenSource Virtuoso](http://vos.openlinksw.com/owiki/wiki/VOS)
 * Για την κατασκευή του TBox της εργασίας χρησιμοποιήθηκε το λογισμικό [Protege](https://protege.stanford.edu/)
 * Για την κατασκευή του ABox χρησιμοποιήθηκαν τα δεδομένα από τον ΟΑΣΑ. Χρησιμοποιήθηκε το RDF σχήμα για την αναπαράσταση, ενώ 
-η μετατροπή από csv σε turtle αρχεία έγινε με τη συγγραφή python scripts (fScripts).
+η μετατροπή από csv σε turtle αρχεία έγινε με τη συγγραφή python scripts (fScripts)
