@@ -1,4 +1,5 @@
-(eng)# **Knowledge based systems' project**
+(eng)
+# **Knowledge based systems' project**
 
 The main purpose of the project is to create a fully functional knowledge base which models the transport system of Athens.
 The data that was used in the project was fethed by [gov.gr/oasa](http://geodata.gov.gr/el/dataset/oasa).
@@ -8,7 +9,8 @@ The data that was used in the project was fethed by [gov.gr/oasa](http://geodata
 * The ABox was constructed based on the data from gov.gr/oasa (as stated above). The data was encoded as Turtle datafiles (.ttl) from
 their CSV counterparts. The RDF was used as the main representation schema of the project.
 
-(gr)# **Εργασία στα Συτήματα και Τεχνολογίες Γνώσης**
+(gr)
+# **Εργασία στα Συτήματα και Τεχνολογίες Γνώσης**
 
 Στόχος της εργασίας είναι η δημιουργία μιας πλήρους λειτουργικής βάσης γνώσης η οποία θα μοντελοποιεί τη γνώση για τα συγκοινωνιακά συστήματα του ΟΑΣΑ. 
 Τα δεδομένα που χρησιμοποιήθηκαν για την κατασκευή της διατίθονται από τον ιστότοπο http://geodata.gov.gr/el/dataset/oasa.
