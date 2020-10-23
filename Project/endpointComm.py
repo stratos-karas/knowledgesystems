@@ -4,11 +4,13 @@ import requests
 import pandas as pd
 
 def answerQuery(query):
+    # The url where virtuoso was listening to
     url = 'http://localhost:8890/sparql/'
+    
     request = requests.get(url, params={'format': 'json', 'query': query})
     data = request.json()
     
-    # Θέλω μόνο τις τιμές και όχι τον τύπο των αοτελεσμάτων
+    # Ignore the type of the data and return only the values
     keys = list(data['results']['bindings'][0].keys())
     values = []
     for datum in data['results']['bindings']:
@@ -32,8 +34,7 @@ def answerQuery(query):
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-# Ερώτημα που επιστρέφει ποιές διαδρομές μέσων μεταφοράς υπάρχουν
-# σε ακτινική απόσταση 400μ. από το κυλικείο των ηλεκτρολόγων
+# Quering which routes exist within 400m from my university's caffeteria
 query2 = '''
 prefix Oro: <http://www.project-stratos.org/ontology/route/>
 prefix Ost: <http://www.project-stratos.org/ontology/stop/>
@@ -62,12 +63,12 @@ group by ?short_name ?long_name ?stop_name
 limit 100
 '''
 
-# Ερώτημα που επιστρέφει διαδρομή χωρίς αλλαγή μέσου 
-# από μια στάση σε μια άλλη. Σε αυτό έχει επιλεχθεί
-# η στάση Μητροπέτροβα με κατεύθυνση προς Πλατεία Αγίας Σοφίας
-# Επιλέχθηκε ως αρχική στάση η στάση Μητροπέτροβα μιας και περνοούν
-# πολλές γραμμές από εκεί αλλά λίγες (μία) καταλήγει στην στάση Πλατείας
-# Αγίας Σοφίας
+# Quering a route without a change in vehicles between a starting
+# and ending point. The starting point was selected based on the
+# big number of routes that branch from there. The ending point
+# was selected based on the few routes that pass by the stop.
+# This was intentional as to "starve out" the search while reaching
+# the ending point
 query3_1 = '''
 prefix Oro: <http://www.project-stratos.org/ontology/route/>
 prefix Ost: <http://www.project-stratos.org/ontology/stop/>
@@ -101,13 +102,13 @@ where
 group by ?rid
 '''
 
-# Ερώτημα το οποίο επιστρέφει διαδρομή από τη
-# στάση Νοσοκομείο Θώρακος επί της Μεσογείων  
-# μέχρι τη στάση Θυρωρείο στην Πολυτεχνειούπουλη
-# με μία (πιθανή) αλλαγή μέσου 
-# Πρόβλημα/περιορισμός είναι η κατεύθυνση των διαδρομών
-# καθώς προτείνονται διαδρομές ανάποδης κατεύθυνσης.
-
+# Quering a route between a starting and ending point with
+# a possible change of route in between
+# The only problem witnessed is that opposite direction
+# routes are also proposed as an answer
+# Adding one more rule on the query leads to a timeout
+# so the solution of this problem is to discern the results
+# on the application level
 query3_2 = '''
 prefix Oro: <http://www.project-stratos.org/ontology/route/>
 prefix Ost: <http://www.project-stratos.org/ontology/stop/>
@@ -156,9 +157,9 @@ where
 group by ?f_rname
 '''
 
-# Ερώτημα που δείχνει τις δυνατότητες του TBox
-# χωρίς να έχει δηλωθεί κάποιο assertion
-# Επιστρέφονται τα ονόματα των διαδρομών τύπου Μετρό
+# Quering the type of transport without asserting it beforehand
+# This query tests the limits of the inference engine and
+# my TBox implementation of this project
 query4 = '''
 define input:inference 'projectRules'
 
