@@ -26,9 +26,9 @@ def to_rdf(name, url, timezone, lang, phone):
 
 def main(work_dir):
     fp = open(work_dir + "/oasa/agency.txt", "r", encoding="utf-8")
-
-    # Δεν μας ενδιαφέρει η πρώτη γραμμή
-    # καθώς αναφέρει τα ονόματα των στηλών
+    
+    # We ignore the first line of the csv file
+    # because it holds info about the name of the fields
     _ = fp.readline()
 
     instances = []
