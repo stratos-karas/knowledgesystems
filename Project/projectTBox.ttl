@@ -1,0 +1,773 @@
+@prefix : <http://www.project-stratos.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pso: <http://www.project-stratos.org/ontology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.project-stratos.org/ontology/> .
+
+<http://www.project-stratos.org/ontology/> rdf:type owl:Ontology ;
+                                            rdfs:comment "Ontology made by Protege program for an undergraduate project (22/07/2020) in Knowledge based systems." .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.project-stratos.org/ontology/agency/agencyHasPhone
+<http://www.project-stratos.org/ontology/agency/agencyHasPhone> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                rdfs:domain <http://www.project-stratos.org/ontology/agency/AgencyName> ;
+                                                                rdfs:range <http://www.project-stratos.org/ontology/agency/AgencyPhone> .
+
+
+###  http://www.project-stratos.org/ontology/agency/agencyHasTimezone
+<http://www.project-stratos.org/ontology/agency/agencyHasTimezone> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                   rdf:type owl:FunctionalProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/agency/AgencyName> ;
+                                                                   rdfs:range <http://www.project-stratos.org/ontology/agency/AgencyTimezone> .
+
+
+###  http://www.project-stratos.org/ontology/agency/agencyHasUrl
+<http://www.project-stratos.org/ontology/agency/agencyHasUrl> rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                                              owl:inverseOf <http://www.project-stratos.org/ontology/agency/agencyUrlOf> ;
+                                                              rdfs:domain <http://www.project-stratos.org/ontology/agency/AgencyName> ;
+                                                              rdfs:range <http://www.project-stratos.org/ontology/agency/AgencyUrl> .
+
+
+###  http://www.project-stratos.org/ontology/agency/agencyUrlOf
+<http://www.project-stratos.org/ontology/agency/agencyUrlOf> rdf:type owl:ObjectProperty ;
+                                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                                             rdfs:domain <http://www.project-stratos.org/ontology/agency/AgencyUrl> ;
+                                                             rdfs:range <http://www.project-stratos.org/ontology/agency/AgencyName> .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceHasEndDate
+<http://www.project-stratos.org/ontology/calendar/serviceHasEndDate> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                     rdf:type owl:FunctionalProperty ;
+                                                                     rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                     rdfs:range <http://www.project-stratos.org/ontology/calendar/ServiceEndDate> .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceHasExceptionDate
+<http://www.project-stratos.org/ontology/calendar/serviceHasExceptionDate> rdf:type owl:ObjectProperty ;
+                                                                           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceHasExceptionType
+<http://www.project-stratos.org/ontology/calendar/serviceHasExceptionType> rdf:type owl:ObjectProperty ;
+                                                                           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceHasStartDate
+<http://www.project-stratos.org/ontology/calendar/serviceHasStartDate> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                       rdf:type owl:FunctionalProperty ;
+                                                                       rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                       rdfs:range <http://www.project-stratos.org/ontology/calendar/ServiceStartDate> .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceHasTripId
+<http://www.project-stratos.org/ontology/calendar/serviceHasTripId> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                    owl:inverseOf <http://www.project-stratos.org/ontology/trip/tripHasServiceId> ;
+                                                                    rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                    rdfs:range <http://www.project-stratos.org/ontology/trip/TripId> .
+
+
+###  http://www.project-stratos.org/ontology/feed/feedPublisherHasUrl
+<http://www.project-stratos.org/ontology/feed/feedPublisherHasUrl> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/feed/FeedPublisherName> ;
+                                                                   rdfs:range <http://www.project-stratos.org/ontology/feed/FeedPublisherUrl> .
+
+
+###  http://www.project-stratos.org/ontology/feed/feedPublisherHasVersion
+<http://www.project-stratos.org/ontology/feed/feedPublisherHasVersion> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                       rdfs:domain <http://www.project-stratos.org/ontology/feed/FeedPublisherName> ;
+                                                                       rdfs:range <http://www.project-stratos.org/ontology/feed/FeedVersion> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeHasColor
+<http://www.project-stratos.org/ontology/route/routeHasColor> rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                                              rdf:type owl:FunctionalProperty ;
+                                                              rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                              rdfs:range <http://www.project-stratos.org/ontology/route/RouteColor> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeHasDescription
+<http://www.project-stratos.org/ontology/route/routeHasDescription> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                    rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                                    rdfs:range <http://www.project-stratos.org/ontology/route/RouteDescription> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeHasLongName
+<http://www.project-stratos.org/ontology/route/routeHasLongName> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                 rdf:type owl:FunctionalProperty ;
+                                                                 rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                                 rdfs:range <http://www.project-stratos.org/ontology/route/RouteLongName> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeHasShortName
+<http://www.project-stratos.org/ontology/route/routeHasShortName> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdf:type owl:FunctionalProperty ;
+                                                                  rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                                  rdfs:range <http://www.project-stratos.org/ontology/route/RouteShortName> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeHasTextColor
+<http://www.project-stratos.org/ontology/route/routeHasTextColor> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdf:type owl:FunctionalProperty ;
+                                                                  rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                                  rdfs:range <http://www.project-stratos.org/ontology/route/RouteTextColor> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeHasTripId
+<http://www.project-stratos.org/ontology/route/routeHasTripId> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                                               owl:inverseOf <http://www.project-stratos.org/ontology/trip/tripHasRouteId> ;
+                                                               rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                               rdfs:range <http://www.project-stratos.org/ontology/trip/TripId> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeIsOfSubType
+<http://www.project-stratos.org/ontology/route/routeIsOfSubType> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                                 rdfs:range <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/routeIsOfType
+<http://www.project-stratos.org/ontology/route/routeIsOfType> rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                                              rdfs:domain <http://www.project-stratos.org/ontology/route/RouteId> ;
+                                                              rdfs:range <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/shape/shapeHasPointHasLat
+<http://www.project-stratos.org/ontology/shape/shapeHasPointHasLat> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.project-stratos.org/ontology/shape/shapeHasPointHasLon
+<http://www.project-stratos.org/ontology/shape/shapeHasPointHasLon> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.project-stratos.org/ontology/shape/shapeHasPointHasSequence
+<http://www.project-stratos.org/ontology/shape/shapeHasPointHasSequence> rdf:type owl:ObjectProperty ;
+                                                                         rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.project-stratos.org/ontology/stop/stopHasCode
+<http://www.project-stratos.org/ontology/stop/stopHasCode> rdf:type owl:ObjectProperty ;
+                                                           rdfs:subPropertyOf owl:topObjectProperty ;
+                                                           rdfs:domain <http://www.project-stratos.org/ontology/stop/StopId> ;
+                                                           rdfs:range <http://www.project-stratos.org/ontology/stop/StopCode> .
+
+
+###  http://www.project-stratos.org/ontology/stop/stopHasDescription
+<http://www.project-stratos.org/ontology/stop/stopHasDescription> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdfs:domain <http://www.project-stratos.org/ontology/stop/StopId> ;
+                                                                  rdfs:range <http://www.project-stratos.org/ontology/stop/StopDescription> .
+
+
+###  http://www.project-stratos.org/ontology/stop/stopHasLat
+<http://www.project-stratos.org/ontology/stop/stopHasLat> rdf:type owl:ObjectProperty ;
+                                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                                          rdf:type owl:FunctionalProperty ;
+                                                          rdfs:domain <http://www.project-stratos.org/ontology/stop/StopId> ;
+                                                          rdfs:range <http://www.project-stratos.org/ontology/stop/StopLat> .
+
+
+###  http://www.project-stratos.org/ontology/stop/stopHasLocationType
+<http://www.project-stratos.org/ontology/stop/stopHasLocationType> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/stop/StopId> ;
+                                                                   rdfs:range <http://www.project-stratos.org/ontology/stop/StopLocationType> .
+
+
+###  http://www.project-stratos.org/ontology/stop/stopHasLon
+<http://www.project-stratos.org/ontology/stop/stopHasLon> rdf:type owl:ObjectProperty ;
+                                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                                          rdf:type owl:FunctionalProperty ;
+                                                          rdfs:domain <http://www.project-stratos.org/ontology/stop/StopId> ;
+                                                          rdfs:range <http://www.project-stratos.org/ontology/stop/StopLon> .
+
+
+###  http://www.project-stratos.org/ontology/stop/stopHasName
+<http://www.project-stratos.org/ontology/stop/stopHasName> rdf:type owl:ObjectProperty ;
+                                                           rdfs:subPropertyOf owl:topObjectProperty ;
+                                                           rdfs:domain <http://www.project-stratos.org/ontology/stop/StopId> ;
+                                                           rdfs:range <http://www.project-stratos.org/ontology/stop/StopName> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasArrivalTime
+<http://www.project-stratos.org/ontology/trip/tripHasArrivalTime> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                  rdfs:range <http://www.project-stratos.org/ontology/trip/TripArrivalTime> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasBlockId
+<http://www.project-stratos.org/ontology/trip/tripHasBlockId> rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                                              rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                              rdfs:range <http://www.project-stratos.org/ontology/trip/BlockId> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasDepartureName
+<http://www.project-stratos.org/ontology/trip/tripHasDepartureName> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                    rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                    rdfs:range <http://www.project-stratos.org/ontology/trip/TripDepartureName> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasDirectionId
+<http://www.project-stratos.org/ontology/trip/tripHasDirectionId> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                  rdfs:range <http://www.project-stratos.org/ontology/trip/DirectionId> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasDropOffType
+<http://www.project-stratos.org/ontology/trip/tripHasDropOffType> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                  rdfs:range <http://www.project-stratos.org/ontology/trip/TripDropOffType> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasHeadSign
+<http://www.project-stratos.org/ontology/trip/tripHasHeadSign> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                                               rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                               rdfs:range <http://www.project-stratos.org/ontology/trip/TripHeadSign> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasPickupType
+<http://www.project-stratos.org/ontology/trip/tripHasPickupType> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                 rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                 rdfs:range <http://www.project-stratos.org/ontology/trip/TripPickupType> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasRouteId
+<http://www.project-stratos.org/ontology/trip/tripHasRouteId> rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                                              rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                              rdfs:range <http://www.project-stratos.org/ontology/route/RouteId> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasServiceId
+<http://www.project-stratos.org/ontology/trip/tripHasServiceId> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                rdfs:range <http://www.project-stratos.org/ontology/calendar/ServiceId> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasShapeId
+<http://www.project-stratos.org/ontology/trip/tripHasShapeId> rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                                              rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                              rdfs:range <http://www.project-stratos.org/ontology/shape/ShapeId> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasStopId
+<http://www.project-stratos.org/ontology/trip/tripHasStopId> rdf:type owl:ObjectProperty ;
+                                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                                             rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                             rdfs:range <http://www.project-stratos.org/ontology/stop/StopId> .
+
+
+###  http://www.project-stratos.org/ontology/trip/tripHasStopSequence
+<http://www.project-stratos.org/ontology/trip/tripHasStopSequence> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/trip/TripId> ;
+                                                                   rdfs:range <http://www.project-stratos.org/ontology/trip/TripStopSequence> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.project-stratos.org/ontology/agency/agencyHasLang
+<http://www.project-stratos.org/ontology/agency/agencyHasLang> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain <http://www.project-stratos.org/ontology/agency/AgencyName> ;
+                                                               rdfs:range xsd:language .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnFriday
+<http://www.project-stratos.org/ontology/calendar/serviceOnFriday> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdf:type owl:FunctionalProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                   rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnMonday
+<http://www.project-stratos.org/ontology/calendar/serviceOnMonday> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdf:type owl:FunctionalProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                   rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnSaturday
+<http://www.project-stratos.org/ontology/calendar/serviceOnSaturday> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                                     rdf:type owl:FunctionalProperty ;
+                                                                     rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                     rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnSunday
+<http://www.project-stratos.org/ontology/calendar/serviceOnSunday> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdf:type owl:FunctionalProperty ;
+                                                                   rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                   rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnThursday
+<http://www.project-stratos.org/ontology/calendar/serviceOnThursday> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                                     rdf:type owl:FunctionalProperty ;
+                                                                     rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                     rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnTuesday
+<http://www.project-stratos.org/ontology/calendar/serviceOnTuesday> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                                                    rdf:type owl:FunctionalProperty ;
+                                                                    rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                    rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/calendar/serviceOnWednesday
+<http://www.project-stratos.org/ontology/calendar/serviceOnWednesday> rdf:type owl:DatatypeProperty ;
+                                                                      rdfs:subPropertyOf owl:topDataProperty ;
+                                                                      rdf:type owl:FunctionalProperty ;
+                                                                      rdfs:domain <http://www.project-stratos.org/ontology/calendar/ServiceId> ;
+                                                                      rdfs:range xsd:boolean .
+
+
+###  http://www.project-stratos.org/ontology/feed/feedPublisherHasLang
+<http://www.project-stratos.org/ontology/feed/feedPublisherHasLang> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain <http://www.project-stratos.org/ontology/feed/FeedPublisherName> ;
+                                                                    rdfs:range xsd:language .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.project-stratos.org/ontology/agency/AgencyName
+<http://www.project-stratos.org/ontology/agency/AgencyName> rdf:type owl:Class ;
+                                                            rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/agency/AgencyPhone
+<http://www.project-stratos.org/ontology/agency/AgencyPhone> rdf:type owl:Class ;
+                                                             rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/agency/AgencyTimezone
+<http://www.project-stratos.org/ontology/agency/AgencyTimezone> rdf:type owl:Class ;
+                                                                rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/agency/AgencyUrl
+<http://www.project-stratos.org/ontology/agency/AgencyUrl> rdf:type owl:Class ;
+                                                           rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/calendar/ServiceEndDate
+<http://www.project-stratos.org/ontology/calendar/ServiceEndDate> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/calendar/ServiceExceptionDate
+<http://www.project-stratos.org/ontology/calendar/ServiceExceptionDate> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/calendar/ServiceExceptionType
+<http://www.project-stratos.org/ontology/calendar/ServiceExceptionType> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/calendar/ServiceId
+<http://www.project-stratos.org/ontology/calendar/ServiceId> rdf:type owl:Class ;
+                                                             rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/calendar/ServiceStartDate
+<http://www.project-stratos.org/ontology/calendar/ServiceStartDate> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/feed/FeedPublisherName
+<http://www.project-stratos.org/ontology/feed/FeedPublisherName> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/feed/FeedPublisherUrl
+<http://www.project-stratos.org/ontology/feed/FeedPublisherUrl> rdf:type owl:Class ;
+                                                                rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/feed/FeedVersion
+<http://www.project-stratos.org/ontology/feed/FeedVersion> rdf:type owl:Class ;
+                                                           rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/AerialType
+<http://www.project-stratos.org/ontology/route/AerialType> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/BusType
+<http://www.project-stratos.org/ontology/route/BusType> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/FerryType
+<http://www.project-stratos.org/ontology/route/FerryType> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/MetroType
+<http://www.project-stratos.org/ontology/route/MetroType> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/MonorailType
+<http://www.project-stratos.org/ontology/route/MonorailType> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteColor
+<http://www.project-stratos.org/ontology/route/RouteColor> rdf:type owl:Class ;
+                                                           rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteDescription
+<http://www.project-stratos.org/ontology/route/RouteDescription> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteId
+<http://www.project-stratos.org/ontology/route/RouteId> rdf:type owl:Class ;
+                                                        rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteLongName
+<http://www.project-stratos.org/ontology/route/RouteLongName> rdf:type owl:Class ;
+                                                              rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteShortName
+<http://www.project-stratos.org/ontology/route/RouteShortName> rdf:type owl:Class ;
+                                                               rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteTextColor
+<http://www.project-stratos.org/ontology/route/RouteTextColor> rdf:type owl:Class ;
+                                                               rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/RouteType
+<http://www.project-stratos.org/ontology/route/RouteType> rdf:type owl:Class ;
+                                                          rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/route/TramType
+<http://www.project-stratos.org/ontology/route/TramType> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/route/TrolleyType
+<http://www.project-stratos.org/ontology/route/TrolleyType> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.project-stratos.org/ontology/route/RouteType> .
+
+
+###  http://www.project-stratos.org/ontology/shape/ShapeId
+<http://www.project-stratos.org/ontology/shape/ShapeId> rdf:type owl:Class ;
+                                                        rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/shape/ShapePointLat
+<http://www.project-stratos.org/ontology/shape/ShapePointLat> rdf:type owl:Class ;
+                                                              rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/shape/ShapePointLon
+<http://www.project-stratos.org/ontology/shape/ShapePointLon> rdf:type owl:Class ;
+                                                              rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/shape/ShapePointSequence
+<http://www.project-stratos.org/ontology/shape/ShapePointSequence> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopCode
+<http://www.project-stratos.org/ontology/stop/StopCode> rdf:type owl:Class ;
+                                                        rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopDescription
+<http://www.project-stratos.org/ontology/stop/StopDescription> rdf:type owl:Class ;
+                                                               rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopId
+<http://www.project-stratos.org/ontology/stop/StopId> rdf:type owl:Class ;
+                                                      rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopLat
+<http://www.project-stratos.org/ontology/stop/StopLat> rdf:type owl:Class ;
+                                                       rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopLocationType
+<http://www.project-stratos.org/ontology/stop/StopLocationType> rdf:type owl:Class ;
+                                                                rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopLon
+<http://www.project-stratos.org/ontology/stop/StopLon> rdf:type owl:Class ;
+                                                       rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/stop/StopName
+<http://www.project-stratos.org/ontology/stop/StopName> rdf:type owl:Class ;
+                                                        rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/BlockId
+<http://www.project-stratos.org/ontology/trip/BlockId> rdf:type owl:Class ;
+                                                       rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/DirectionId
+<http://www.project-stratos.org/ontology/trip/DirectionId> rdf:type owl:Class ;
+                                                           rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripArrivalTime
+<http://www.project-stratos.org/ontology/trip/TripArrivalTime> rdf:type owl:Class ;
+                                                               rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripDepartureName
+<http://www.project-stratos.org/ontology/trip/TripDepartureName> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripDropOffType
+<http://www.project-stratos.org/ontology/trip/TripDropOffType> rdf:type owl:Class ;
+                                                               rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripHeadSign
+<http://www.project-stratos.org/ontology/trip/TripHeadSign> rdf:type owl:Class ;
+                                                            rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripId
+<http://www.project-stratos.org/ontology/trip/TripId> rdf:type owl:Class ;
+                                                      rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripOneDirectional
+<http://www.project-stratos.org/ontology/trip/TripOneDirectional> rdf:type owl:Class ;
+                                                                  owl:equivalentClass [ owl:intersectionOf ( <http://www.project-stratos.org/ontology/trip/TripId>
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://www.project-stratos.org/ontology/trip/tripHasDirectionId> ;
+                                                                                                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                                               owl:onClass <http://www.project-stratos.org/ontology/trip/DirectionId>
+                                                                                                             ]
+                                                                                                           ) ;
+                                                                                        rdf:type owl:Class
+                                                                                      ] .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripPickupType
+<http://www.project-stratos.org/ontology/trip/TripPickupType> rdf:type owl:Class ;
+                                                              rdfs:subClassOf owl:Thing .
+
+
+###  http://www.project-stratos.org/ontology/trip/TripStopSequence
+<http://www.project-stratos.org/ontology/trip/TripStopSequence> rdf:type owl:Class ;
+                                                                rdfs:subClassOf owl:Thing .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.project-stratos.org/resources/route/types/1
+<http://www.project-stratos.org/resources/route/types/1> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.project-stratos.org/ontology/route/MetroType> .
+
+
+###  http://www.project-stratos.org/resources/route/types/12
+<http://www.project-stratos.org/resources/route/types/12> rdf:type owl:NamedIndividual ,
+                                                                   <http://www.project-stratos.org/ontology/route/MonorailType> .
+
+
+###  http://www.project-stratos.org/resources/route/types/3
+<http://www.project-stratos.org/resources/route/types/3> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.project-stratos.org/ontology/route/BusType> .
+
+
+###  http://www.project-stratos.org/resources/route/types/4
+<http://www.project-stratos.org/resources/route/types/4> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.project-stratos.org/ontology/route/FerryType> .
+
+
+###  http://www.project-stratos.org/resources/route/types/6
+<http://www.project-stratos.org/resources/route/types/6> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.project-stratos.org/ontology/route/AerialType> .
+
+
+###  http://www.project-stratos.org/resources/route/types/800
+<http://www.project-stratos.org/resources/route/types/800> rdf:type owl:NamedIndividual ,
+                                                                    <http://www.project-stratos.org/ontology/route/TrolleyType> .
+
+
+###  http://www.project-stratos.org/resources/route/types/900
+<http://www.project-stratos.org/resources/route/types/900> rdf:type owl:NamedIndividual ,
+                                                                    <http://www.project-stratos.org/ontology/route/TramType> .
+
+
+###  http://www.project-stratos.org/resources/trip/dir-ids/0
+<http://www.project-stratos.org/resources/trip/dir-ids/0> rdf:type owl:NamedIndividual ,
+                                                                   <http://www.project-stratos.org/ontology/trip/DirectionId> .
+
+
+###  http://www.project-stratos.org/resources/trip/dir-ids/1
+<http://www.project-stratos.org/resources/trip/dir-ids/1> rdf:type owl:NamedIndividual ,
+                                                                   <http://www.project-stratos.org/ontology/trip/DirectionId> .
+
+
+###  http://www.project-stratos.org/resources/trip/dropoff-types/0
+<http://www.project-stratos.org/resources/trip/dropoff-types/0> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.project-stratos.org/ontology/trip/TripDropOffType> .
+
+
+###  http://www.project-stratos.org/resources/trip/dropoff-types/1
+<http://www.project-stratos.org/resources/trip/dropoff-types/1> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.project-stratos.org/ontology/trip/TripDropOffType> .
+
+
+###  http://www.project-stratos.org/resources/trip/dropoff-types/2
+<http://www.project-stratos.org/resources/trip/dropoff-types/2> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.project-stratos.org/ontology/trip/TripDropOffType> .
+
+
+###  http://www.project-stratos.org/resources/trip/dropoff-types/3
+<http://www.project-stratos.org/resources/trip/dropoff-types/3> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.project-stratos.org/ontology/trip/TripDropOffType> .
+
+
+###  http://www.project-stratos.org/resources/trip/pickup-types/0
+<http://www.project-stratos.org/resources/trip/pickup-types/0> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.project-stratos.org/ontology/trip/TripPickupType> .
+
+
+###  http://www.project-stratos.org/resources/trip/pickup-types/1
+<http://www.project-stratos.org/resources/trip/pickup-types/1> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.project-stratos.org/ontology/trip/TripPickupType> .
+
+
+###  http://www.project-stratos.org/resources/trip/pickup-types/2
+<http://www.project-stratos.org/resources/trip/pickup-types/2> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.project-stratos.org/ontology/trip/TripPickupType> .
+
+
+###  http://www.project-stratos.org/resources/trip/pickup-types/3
+<http://www.project-stratos.org/resources/trip/pickup-types/3> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.project-stratos.org/ontology/trip/TripPickupType> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.project-stratos.org/ontology/agency/AgencyName>
+                <http://www.project-stratos.org/ontology/agency/AgencyPhone>
+                <http://www.project-stratos.org/ontology/agency/AgencyTimezone>
+                <http://www.project-stratos.org/ontology/agency/AgencyUrl>
+                <http://www.project-stratos.org/ontology/calendar/ServiceEndDate>
+                <http://www.project-stratos.org/ontology/calendar/ServiceExceptionDate>
+                <http://www.project-stratos.org/ontology/calendar/ServiceExceptionType>
+                <http://www.project-stratos.org/ontology/calendar/ServiceId>
+                <http://www.project-stratos.org/ontology/calendar/ServiceStartDate>
+                <http://www.project-stratos.org/ontology/feed/FeedPublisherName>
+                <http://www.project-stratos.org/ontology/feed/FeedPublisherUrl>
+                <http://www.project-stratos.org/ontology/feed/FeedVersion>
+                <http://www.project-stratos.org/ontology/route/AerialType>
+                <http://www.project-stratos.org/ontology/route/BusType>
+                <http://www.project-stratos.org/ontology/route/FerryType>
+                <http://www.project-stratos.org/ontology/route/MetroType>
+                <http://www.project-stratos.org/ontology/route/MonorailType>
+                <http://www.project-stratos.org/ontology/route/RouteColor>
+                <http://www.project-stratos.org/ontology/route/RouteDescription>
+                <http://www.project-stratos.org/ontology/route/RouteId>
+                <http://www.project-stratos.org/ontology/route/RouteLongName>
+                <http://www.project-stratos.org/ontology/route/RouteShortName>
+                <http://www.project-stratos.org/ontology/route/RouteTextColor>
+                <http://www.project-stratos.org/ontology/route/TramType>
+                <http://www.project-stratos.org/ontology/route/TrolleyType>
+                <http://www.project-stratos.org/ontology/shape/ShapeId>
+                <http://www.project-stratos.org/ontology/shape/ShapePointLat>
+                <http://www.project-stratos.org/ontology/shape/ShapePointLon>
+                <http://www.project-stratos.org/ontology/shape/ShapePointSequence>
+                <http://www.project-stratos.org/ontology/stop/StopCode>
+                <http://www.project-stratos.org/ontology/stop/StopDescription>
+                <http://www.project-stratos.org/ontology/stop/StopId>
+                <http://www.project-stratos.org/ontology/stop/StopLat>
+                <http://www.project-stratos.org/ontology/stop/StopLocationType>
+                <http://www.project-stratos.org/ontology/stop/StopLon>
+                <http://www.project-stratos.org/ontology/stop/StopName>
+                <http://www.project-stratos.org/ontology/trip/BlockId>
+                <http://www.project-stratos.org/ontology/trip/DirectionId>
+                <http://www.project-stratos.org/ontology/trip/TripArrivalTime>
+                <http://www.project-stratos.org/ontology/trip/TripDepartureName>
+                <http://www.project-stratos.org/ontology/trip/TripDropOffType>
+                <http://www.project-stratos.org/ontology/trip/TripHeadSign>
+                <http://www.project-stratos.org/ontology/trip/TripId>
+                <http://www.project-stratos.org/ontology/trip/TripPickupType>
+                <http://www.project-stratos.org/ontology/trip/TripStopSequence>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.project-stratos.org/ontology/route/AerialType>
+                <http://www.project-stratos.org/ontology/route/BusType>
+                <http://www.project-stratos.org/ontology/route/FerryType>
+                <http://www.project-stratos.org/ontology/route/MetroType>
+                <http://www.project-stratos.org/ontology/route/MonorailType>
+                <http://www.project-stratos.org/ontology/route/TramType>
+                <http://www.project-stratos.org/ontology/route/TrolleyType>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
