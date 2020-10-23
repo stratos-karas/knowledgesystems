@@ -5,7 +5,7 @@ The data that was used in the project was fethed by [gov.gr/oasa](http://geodata
 
 * [OpenSource Virtuoso](http://vos.openlinksw.com/owiki/wiki/VOS) was used as a storage and enty point of the knowledge base
 * [Protege](https://protege.stanford.edu/) was used to construct the TBox
-* The ABox was constructed based on the data from gov.gr/oasa (as stated above). The data were encoded as Turtle datafiles from
+* The ABox was constructed based on the data from gov.gr/oasa (as stated above). The data was encoded as Turtle datafiles from
 their CSV counterparts. The RDF was used as the main representation schema of the project.
 
 # **Εργασία στα Συτήματα και Τεχνολογίες Γνώσης**
