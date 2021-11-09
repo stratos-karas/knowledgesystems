@@ -10,7 +10,7 @@ The data that was used in the project was fethed by [gov.gr/oasa](http://geodata
 their CSV counterparts. The RDF was used as the main representation schema of the project.
 
 (gr)
-# **Εργασία στα Συτήματα και Τεχνολογίες Γνώσης**
+# **Εργασία στα Συστήματα και Τεχνολογίες Γνώσης**
 
 Στόχος της εργασίας είναι η δημιουργία μιας πλήρους λειτουργικής βάσης γνώσης η οποία θα μοντελοποιεί τη γνώση για τα συγκοινωνιακά συστήματα του ΟΑΣΑ. 
 Τα δεδομένα που χρησιμοποιήθηκαν για την κατασκευή της διατίθονται από τον ιστότοπο http://geodata.gov.gr/el/dataset/oasa.
